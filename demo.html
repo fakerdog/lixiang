@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    
+</body>
+<script>
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(successCallback,errorCallback);
+    }else{
+        console.log('sorry,你的浏览器不支持导航！');
+    }
+    function successCallback(position){
+       var wd=position.coords.latitude;
+       var jd=position.coords.longitude;
+       console.log(jd+","+wd);
+    //    118.77820989978076,32.02553780302869
+        console.log('获取位置成功');
+    }
+    function errorCallback() {
+        console.log('获取位置失败！');
+    }
+        // 谷歌地图：32.0235003680, 118.7834187497
+        // 百度地图：32.0297492788, 118.7898406039
+        // 腾讯高德：32.0234795730, 118.7834038698
+
+</script>
+</html>

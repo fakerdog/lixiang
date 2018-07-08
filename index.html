@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<style>
+    .finished{
+        text-decoration: underline;
+        color:red;
+    }
+</style>
+<body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        <ul>
+            <li v-for="value in items" :class="{finished:value.progress}" v-on:click="toggle(value)">{{value.project}}</li>
+        </ul>
+        <input type="text" v-model="newItem" v-on:keydown.enter=addnewItem>
+
+    </div>
+    
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            message:'hellow world',
+            title:"this is todo lists",
+            items:[
+                {
+                    project:"runing",
+                    progress:false
+                },
+                 {
+                    project: "swiming",
+                    progress: true
+                }
+            ],
+            objList:{
+                name:"apple",
+                color:"red",
+                size:"3o"
+            },
+            newItem:""
+        },
+        methods:{
+            toggle:function (value) {
+                value.progress=!value.progress
+            },
+            addnewItem:function(){
+                this.items.push({
+                     project: this.newItem,
+                     progress: false
+                });
+                this.newItem=""
+        }   
+        }
+    })
+    </script>
+</html>
